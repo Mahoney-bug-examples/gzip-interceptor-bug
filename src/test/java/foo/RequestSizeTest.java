@@ -29,10 +29,42 @@ public class RequestSizeTest {
 
     @ParameterizedTest
     @ValueSource(ints = {
-            72 * 1024,
-            (72 * 1024) + 1
+            0,
+            1,
+            8191,
+            8192,
+            8193,
+            8194,
+            8195,
+            8226,
+            8227,
+            8260,
+            8261,
+            8262,
+            8263,
+            8264,
+            8192,
+            8193,
+            8194,
+            8195,
+            8226,
+            8227,
+            8228,
+            8259,
+            8260,
+            8261,
+            8262,
+            8263,
+            8515,
+            8516,
+            8517,
+            8518,
+            8773,
+            8774,
+            8775,
+            9216,
     })
-    void can_post_more_than_72K_to_the_server(int bytesToSend) throws Exception {
+    void can_post_arbitrary_body_sizes_to_the_server(int bytesToSend) throws Exception {
 
         var body = new StreamingOutput() {
             @Override
